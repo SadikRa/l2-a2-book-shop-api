@@ -7,13 +7,20 @@ const createBookIntoDB = async (book: Product) => {
   return result;
 };
 
-/// get all book 
+/// get all book
 const getAllBooksFromDB = async () => {
-    const result = await ProductModel.find()
-    return result
-}
+  const result = await ProductModel.find();
+  return result;
+};
+
+// get a book
+const getABookFromDB = async (_id: string) => {
+  const result = ProductModel.findOne({ _id });
+  return result;
+};
 
 export const ProductServices = {
   createBookIntoDB,
-  getAllBooksFromDB
+  getAllBooksFromDB,
+  getABookFromDB,
 };
