@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/products', productControllers.createBook);
 
-router.get('/', );
+router.get('/products', productControllers.GetAllBook);
 
 export const ProductRoutes = router;

@@ -22,6 +22,27 @@ const createBook = async (req: Request, res: Response) => {
   }
 };
 
+/// get all book
+
+const GetAllBook = async (req: Request, res: Response) => {
+  try {
+    const result = await ProductServices.getAllBooksFromDB();
+
+    res.status(200).json({
+      message: 'Books retrieved successfully',
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: 'Something went wrong',
+      error: error,
+    });
+  }
+};
+
 export const productControllers = {
   createBook,
+  GetAllBook,
 };
