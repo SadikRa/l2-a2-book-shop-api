@@ -42,7 +42,6 @@ const GetAllBook = async (req: Request, res: Response) => {
 };
 
 //get a book 
-
 const GetABook = async (req: Request , res: Response) => {
     try{
         const { productId } = req.params
@@ -64,8 +63,33 @@ const GetABook = async (req: Request , res: Response) => {
 
 }
 
+// update a book
+const UpdateABook = async (req: Request, res: Response) =>{
+  try{
+    const { productId } = req.params;
+  const book = req.body;
+  const result = await ProductServices.UpdateABook(productId, book)
+
+  res.status(200).json({
+        message: "A Book Update successfully",
+        status: true,
+        data: result
+  })
+
+  }catch(error){
+    res.status(500).json({
+      status: false,
+      message: 'Something went wrong',
+      error: error,
+    });
+  }
+
+
+}
+
 export const productControllers = {
   createBook,
   GetAllBook,
   GetABook,
+  UpdateABook
 };
