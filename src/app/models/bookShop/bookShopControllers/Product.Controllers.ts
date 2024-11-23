@@ -1,20 +1,22 @@
 import { Request, Response } from 'express';
 import { ProductServices } from '../bookShopServices/Product.Services';
-import { productValidationSchema, updateProductValidationSchema } from '../validation/productValidation';
+import {
+  productValidationSchema,
+  updateProductValidationSchema,
+} from '../validation/productValidation';
 import Joi from 'joi';
 
 ///create a book
 const createBook = async (req: Request, res: Response) => {
   try {
     // Validate request body
-    const { error } = productValidationSchema.validate(req.body, {
-      abortEarly: false,
-    });
+    const { error } = productValidationSchema.validate(req.body);
+    // console.log(error);
     if (error) {
-      return res.status(400).json({
-        message: 'Validation failed',
+      res.status(400).json({
         success: false,
-        error: error.details.map((err) => err.message),
+        message: 'something went wrong',
+        error: error.details,
       });
     }
 
@@ -80,14 +82,13 @@ const GetABook = async (req: Request, res: Response) => {
 const UpdateABook = async (req: Request, res: Response) => {
   try {
     // Validate request body
-    const { error } = updateProductValidationSchema.validate(req.body, {
-      abortEarly: false,
-    });
+    const { error } = updateProductValidationSchema.validate(req.body);
+    // console.log(error);
     if (error) {
-      return res.status(400).json({
-        message: 'Validation failed',
+      res.status(400).json({
         success: false,
-        error: error.details.map((err) => err.message),
+        message: 'Validation failed',
+        error: error.details,
       });
     }
 
@@ -117,13 +118,14 @@ const deleteABook = async (req: Request, res: Response) => {
 
     // Validate productId
     const { error } = idValidationSchema.validate(productId);
-    if (error) {
-      return res.status(400).json({
-        message: 'Validation failed',
+    if(error){
+      res.status(400).json({
         success: false,
-        error: error.details.map((err) => err.message),
+        message: 'Validation failed',
+        error: error.details,
       });
     }
+     
 
     const result = await ProductServices.deleteABook(productId);
 

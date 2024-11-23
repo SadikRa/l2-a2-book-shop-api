@@ -6,14 +6,12 @@ import { orderValidationSchema } from '../validation/orderValidation';
 const OrderABook = async (req: Request, res: Response) => {
   try {
     // Validate request body
-    const { error } = orderValidationSchema.validate(req.body, {
-      abortEarly: false,
-    });
-    if (error) {
-      return res.status(400).json({
-        message: 'Validation failed',
+    const { error } = orderValidationSchema.validate(req.body);
+    if(error){
+      res.status(400).json({
         success: false,
-        error: error.details.map((error) => error.message),
+        message: 'Validation failed',
+        error: error.details,
       });
     }
 

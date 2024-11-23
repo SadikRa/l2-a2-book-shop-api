@@ -48,17 +48,6 @@ Calculate Revenue: Computes the total revenue from all orders using aggregation.
 - npm install cors
 - npm i joi
 
-
-## How to Set Up the Project
-- Step 1: Clone the Repository
-- Clone the repository from GitHub to your local machine:
-
-````
-git clone https://github.com/SadikRa/l2-a2-book-shop-api.git
-```
-
-
-
 ### Project Structure
 
 l2-a2-book-shop-api/
