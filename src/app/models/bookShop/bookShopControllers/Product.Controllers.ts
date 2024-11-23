@@ -1,9 +1,23 @@
 import { Request, Response } from 'express';
 import { ProductServices } from '../bookShopServices/Product.Services';
+import { productValidationSchema, updateProductValidationSchema } from '../validation/productValidation';
+import Joi from 'joi';
 
 ///create a book
 const createBook = async (req: Request, res: Response) => {
   try {
+    // Validate request body
+    const { error } = productValidationSchema.validate(req.body, {
+      abortEarly: false,
+    });
+    if (error) {
+      return res.status(400).json({
+        message: 'Validation failed',
+        success: false,
+        error: error.details.map((err) => err.message),
+      });
+    }
+
     // console.log('book request', req.body);
     const productData = req.body;
     const result = await ProductServices.createBookIntoDB(productData);
@@ -65,6 +79,18 @@ const GetABook = async (req: Request, res: Response) => {
 // update a book
 const UpdateABook = async (req: Request, res: Response) => {
   try {
+    // Validate request body
+    const { error } = updateProductValidationSchema.validate(req.body, {
+      abortEarly: false,
+    });
+    if (error) {
+      return res.status(400).json({
+        message: 'Validation failed',
+        success: false,
+        error: error.details.map((err) => err.message),
+      });
+    }
+
     const { productId } = req.params;
     const book = req.body;
     const result = await ProductServices.UpdateABook(productId, book);
@@ -84,9 +110,21 @@ const UpdateABook = async (req: Request, res: Response) => {
 };
 
 //delete a book
+const idValidationSchema = Joi.string().required();
 const deleteABook = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
+
+    // Validate productId
+    const { error } = idValidationSchema.validate(productId);
+    if (error) {
+      return res.status(400).json({
+        message: 'Validation failed',
+        success: false,
+        error: error.details.map((err) => err.message),
+      });
+    }
+
     const result = await ProductServices.deleteABook(productId);
 
     res.status(200).json({
