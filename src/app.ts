@@ -12,13 +12,12 @@ app.use(cors());
 app.use('/api', ProductRoutes);
 app.use('/api', OrderRoutes);
 
-
-app.use(errorHandler);
-
 const getAController = (req: Request, res: Response) => {
   res.send('hElLo SaDik');
 };
 
 app.get('/', getAController);
+
+app.use(errorHandler);
 
 export default app;

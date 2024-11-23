@@ -90,3 +90,10 @@ Clone the repository:
 git clone https://github.com/SadikRa/l2-a2-book-shop-api
 
 ```
+
+## For deployment 
+ - Vercel
+ ```bash
+ npm i -g vercel
+```
+ - vercel --prod
