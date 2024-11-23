@@ -97,3 +97,5 @@ git clone https://github.com/SadikRa/l2-a2-book-shop-api
  npm i -g vercel
 ```
  - vercel --prod
+
+- my vercel vercel deploy server link:   https://l2-a2-book-shop-api.vercel.app/
