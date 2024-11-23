@@ -10,12 +10,14 @@ BookShop API is a simple RESTful API books in a bookshop. It allows you to perfo
 
 Implement CRUD operations in the controller.
 
-- Create a new book.
-- get a book .
-- Update details a book.
-- Delete a book from the collection.
-- Order a book.
-- Calculate Revenue Orders
+- Books Management
+Create a new book.
+Read details of a specific book or all books.
+Update book details
+Delete a book from the inventory.
+- Order Management
+Order a Book: Deducts stock quantity and updates inStock status.
+Calculate Revenue: Computes the total revenue from all orders using aggregation.
 
 ---
 
@@ -47,6 +49,49 @@ Implement CRUD operations in the controller.
 - npm i joi
 
 
+## How to Set Up the Project
+- Step 1: Clone the Repository
+- Clone the repository from GitHub to your local machine:
+
+````
+git clone https://github.com/SadikRa/l2-a2-book-shop-api.git
+```
+
+
+
+### Project Structure
+
+l2-a2-book-shop-api/
+├── src/
+│       ├── app/
+│   │   ├── models/
+│   │      ├── bookShop/
+│   │      │   ├── bookShopRoutes/          
+│   │      │   ├── bookShopInterface/          
+│   │      │   ├── bookShopModel/          
+│   │      │   ├── bookShopControllers/    
+│   │      │   ├── bookShopServices/        
+│   │      │   ├── validation/        
+│   │                         
+│   ├── ErrorFile/                           
+│   ├── index.ts                             
+├── .env                                     
+├── tsconfig.json                           
+├── package.json                           
+
+
+
+## API Endpoints
+
+- Books
+POST /api/products - Create a new book.
+GET /api/products - Retrieve all books.
+GET /api/products/:productId - Retrieve a specific book.
+PUT /api/products/:productId - Update a specific book.
+DELETE /api/products/:productId - Delete a specific book.
+- Orders
+POST /api/orders - Place an order for a book.
+GET /api/orders/revenue - Calculate total revenue.
 
 ### gitHub link
 
