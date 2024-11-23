@@ -23,6 +23,27 @@ const OrderABook = async (req: Request, res: Response) => {
 };
 
 
+///
+const CalculateRevenueOrders = async (req: Request, res: Response) => {
+    try {
+      const totalRevenue = await OrderServices.CalculateRevenueOrders();
+  
+      res.status(200).json({
+        message: "Revenue calculated successfully",
+        status: true,
+        data: { totalRevenue },
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: "Something went wrong",
+        status: false,
+        error,
+      });
+    }
+  };
+
+  
 export const OrderControllers = {
   OrderABook,
+  CalculateRevenueOrders
 };

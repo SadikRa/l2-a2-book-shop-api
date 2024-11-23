@@ -22,6 +22,21 @@ const OrderABook = async (order: Order) => {
   return result;
 };
 
+//Calculate Revenue Orders
+const CalculateRevenueOrders = async () => {
+    const result = await OrderModel.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: { $multiply: ["$totalPrice", 1] } },
+        },
+      },
+    ]);
+  
+    return result.length > 0 ? result[0].totalRevenue : 0;
+  };
+
 export const OrderServices = {
   OrderABook,
+  CalculateRevenueOrders
 };
