@@ -21,7 +21,7 @@ const getABookFromDB = async (_id: string) => {
 
 //update a book
 const UpdateABook = async (_id: string, book: Partial<Product>) => {
-  const result = await ProductModel.findByIdAndUpdate(_id, book);
+  const result = await ProductModel.findByIdAndUpdate(_id, book , { new: true, runValidators: true } );
   return result;
 };
 

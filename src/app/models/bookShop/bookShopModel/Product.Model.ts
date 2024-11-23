@@ -39,6 +39,8 @@ const productSchema = new Schema({
     type: Boolean,
     required: true,
   },
-});
+},
+{ timestamps: true }
+);
 
 export const ProductModel = model('Product', productSchema);

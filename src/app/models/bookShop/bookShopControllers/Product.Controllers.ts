@@ -69,6 +69,13 @@ const UpdateABook = async (req: Request, res: Response) => {
     const book = req.body;
     const result = await ProductServices.UpdateABook(productId, book);
 
+    if (!result) {
+      return res.status(404).json({
+        message: 'Book not found',
+        status: false,
+      });
+    }
+
     res.status(200).json({
       message: 'A Book Update successfully',
       status: true,
