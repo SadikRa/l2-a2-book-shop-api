@@ -28,6 +28,8 @@ Implement CRUD operations in the controller.
 - **prettier**
 - **dotenv**
 - **cors**
+- **joi**
+
 
 ---
 
@@ -42,6 +44,7 @@ Implement CRUD operations in the controller.
 - npm install --save-dev prettier
 - npm install dotenv
 - npm install cors
+- npm i joi
 
 
 
