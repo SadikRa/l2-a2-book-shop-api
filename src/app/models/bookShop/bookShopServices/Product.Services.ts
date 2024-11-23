@@ -22,12 +22,19 @@ const getABookFromDB = async (_id: string) => {
 //update a book
 const UpdateABook = async (_id: string, book: Partial<Product>) => {
   const result = await ProductModel.findByIdAndUpdate(_id, book);
-  return result
-}
+  return result;
+};
+
+//delete a book
+const deleteABook = async (_id: string) => {
+  const result = await ProductModel.findOneAndDelete({ _id });
+  return result;
+};
 
 export const ProductServices = {
   createBookIntoDB,
   getAllBooksFromDB,
   getABookFromDB,
-  UpdateABook
+  UpdateABook,
+  deleteABook,
 };
