@@ -1,9 +1,10 @@
 import express from 'express';
+import { OrderControllers } from '../bookShopControllers/Order.Controllers';
 
 const router = express.Router();
 
-router.post('/products', );
+//order a book 
+router.post('/orders', OrderControllers.OrderABook);
 
-router.get('/', );
 
 export const OrderRoutes = router;

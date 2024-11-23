@@ -19,6 +19,8 @@ const orderSchema = new Schema({
     type: Number,
     required: true,
   },
-});
+},
+{ timestamps: true }
+);
 
 export const OrderModel = model('Order', orderSchema);

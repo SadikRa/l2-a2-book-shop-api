@@ -4,7 +4,7 @@ import { ProductServices } from '../bookShopServices/Product.Services';
 ///create a book
 const createBook = async (req: Request, res: Response) => {
   try {
-    console.log('book request', req.body);
+    // console.log('book request', req.body);
     const productData = req.body;
     const result = await ProductServices.createBookIntoDB(productData);
 
@@ -69,13 +69,6 @@ const UpdateABook = async (req: Request, res: Response) => {
     const book = req.body;
     const result = await ProductServices.UpdateABook(productId, book);
 
-    if (!result) {
-      return res.status(404).json({
-        message: 'Book not found',
-        status: false,
-      });
-    }
-
     res.status(200).json({
       message: 'A Book Update successfully',
       status: true,
@@ -85,7 +78,7 @@ const UpdateABook = async (req: Request, res: Response) => {
     res.status(500).json({
       status: false,
       message: 'Something went wrong',
-      error: error,
+      error,
     });
   }
 };

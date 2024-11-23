@@ -12,9 +12,9 @@ router.get('/products', productControllers.GetAllBook);
 router.get('/products/:productId', productControllers.GetABook);
 
 //update a book 
-router.put('/products/:productId', productControllers.UpdateABook)
+router.put('/products/:productId', productControllers.UpdateABook);
 
 //delete a book 
-router.delete('/products/:productId', productControllers.deleteABook)
+router.delete('/products/:productId', productControllers.deleteABook);
 
 export const ProductRoutes = router;
